@@ -15,7 +15,6 @@ class OrdersTableViewController: UITableViewController {
         Task.detached {
             await self.populateOrders()
         }
-        
     }
     
     private func populateOrders() async {
@@ -25,15 +24,11 @@ class OrdersTableViewController: UITableViewController {
         
         let resource = Resource<[Order]>(url: coffeeOrdersURL)
         
-        let result = await Webservice().load(resource: resource)
-        
-        switch result {
-        case .success(let orders):
-            print(orders)
-        case .failure(let error):
+        do {
+            let result = try await Webservice().load(resource: resource)
+            print(result)
+        } catch {
             print(error)
         }
-        
-        
     }
 }

@@ -62,6 +62,7 @@
 		65399C0229928DF700871C3F /* Coffee-Maker */ = {
 			isa = PBXGroup;
 			children = (
+				6567A49E2992AC5500F6DE02 /* ViewModels */,
 				6567A49B2992A78100F6DE02 /* Models */,
 				6567A4982992A0A800F6DE02 /* Servieces */,
 				65399C1729928E1E00871C3F /* Controllers */,
@@ -98,6 +99,13 @@
 				6567A49C2992A7B400F6DE02 /* Order.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6567A49E2992AC5500F6DE02 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
