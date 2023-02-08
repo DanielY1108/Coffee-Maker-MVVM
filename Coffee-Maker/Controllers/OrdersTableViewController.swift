@@ -20,14 +20,9 @@ class OrdersTableViewController: UITableViewController {
     }
     
     private func populateOrders() async {
-        guard let coffeeOrdersURL = URL(string: "https://warp-wiry-rugby.glitch.me/orders") else {
-            fatalError("URL was incorrect")
-        }
-        
-        let resource = Resource<[Order]>(url: coffeeOrdersURL)
         
         do {
-            let orders = try await Webservice().load(resource: resource)
+            let orders = try await Webservice().load(resource: Order.all)
             orderListViewModel.ordersViewModel = orders.map(OrderViewModel.init)
             
             self.tableView.reloadData()
