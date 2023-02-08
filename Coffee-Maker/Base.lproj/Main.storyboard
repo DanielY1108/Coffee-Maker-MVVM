@@ -136,6 +136,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailTextFiled" destination="sCl-PD-dD8" id="UOX-Qt-aLm"/>
+                        <outlet property="nameTextField" destination="Ez6-cA-eDp" id="9t9-Gx-QLl"/>
                         <outlet property="tableView" destination="Rhi-ZZ-FjP" id="yLB-M5-QC5"/>
                     </connections>
                 </viewController>

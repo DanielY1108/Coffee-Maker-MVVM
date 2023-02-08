@@ -9,9 +9,12 @@ import UIKit
 
 class AddOrderViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    private var coffeeSizeSegmentedControl: UISegmentedControl!
     private var viewModel = AddCoffeOrderViewModel()
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var emailTextFiled: UITextField!
+    private var coffeeSizeSegmentedControl: UISegmentedControl!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,16 @@ class AddOrderViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        let selectSize = self.coffeeSizeSegmentedControl.titleForSegment(at: self.coffeeSizeSegmentedControl.selectedSegmentIndex)
+        
+        guard let indexPath = self.tableView.indexPathForSelectedRow else {
+            fatalError("Error in selecting Coffee")
+        }
+        
+        self.viewModel.name = nameTextField.text
+        self.viewModel.email = emailTextFiled.text
+        self.viewModel.selcetedType = self.viewModel.types[indexPath.row]
+        self.viewModel.selcetedSize = selectSize
     }
     
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
