@@ -9,17 +9,17 @@ import Foundation
 
 class OrderListViewModel {
     
-    var orderViewModel: [OrderViewModel]
+    var ordersViewModel: [OrderViewModel]
     
     init() {
-        self.orderViewModel = [OrderViewModel]()
+        self.ordersViewModel = [OrderViewModel]()
     }
 }
 
 extension OrderListViewModel {
     
     func orderViewModel(at index: Int) -> OrderViewModel {
-        return self.orderViewModel[index]
+        return self.ordersViewModel[index]
     }
 }
 
