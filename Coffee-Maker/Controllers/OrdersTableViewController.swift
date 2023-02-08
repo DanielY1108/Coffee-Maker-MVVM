@@ -30,6 +30,29 @@ class OrdersTableViewController: UITableViewController {
             print(error.localizedDescription)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let navigationC = segue.destination as? UINavigationController,
+              let addCoffeeOrderVC = navigationC.viewControllers.first as? AddOrderViewController else {
+            fatalError("Error performing segeu!")
+        }
+        addCoffeeOrderVC.delegate = self
+    }
+}
+
+extension OrdersTableViewController: AddCoffeeOrderDelegate {
+    func addCoffeeOrderViewControlletDidSave(_ controller: UIViewController, order: Order) {
+        controller.dismiss(animated: true)
+        
+        let orderVM = OrderViewModel(order: order)
+        self.orderListViewModel.ordersViewModel.append(orderVM)
+        self.tableView.insertRows(at: [IndexPath.init(row: self.orderListViewModel.ordersViewModel.count - 1, section: 0)], with: .automatic)
+    }
+    
+    func addCoffeeOrderViewControlletDidClose(_ controller: UIViewController) {
+        controller.dismiss(animated: true)
+    }
 }
 
 extension OrdersTableViewController {

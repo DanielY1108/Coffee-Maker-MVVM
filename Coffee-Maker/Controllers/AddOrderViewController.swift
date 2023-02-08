@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol AddCoffeeOrderDelegate {
+    func addCoffeeOrderViewControlletDidSave(_ controller: UIViewController, order: Order)
+    func addCoffeeOrderViewControlletDidClose(_ controller: UIViewController)
+}
+
 class AddOrderViewController: UIViewController {
+    
+    var delegate: AddCoffeeOrderDelegate?
     
     private var viewModel = AddCoffeOrderViewModel()
     @IBOutlet weak var tableView: UITableView!
@@ -45,10 +52,27 @@ class AddOrderViewController: UIViewController {
         self.viewModel.email = emailTextFiled.text
         self.viewModel.selcetedType = self.viewModel.types[indexPath.row]
         self.viewModel.selcetedSize = selectSize
+        
+        Task.detached {
+            do {
+                let order = try await Webservice().load(resource: Order.create(viewModel: self.viewModel))
+                
+                if let order = order, let delegate = await self.delegate {
+                    
+                    DispatchQueue.main.async {
+                        delegate.addCoffeeOrderViewControlletDidSave(self, order: order)
+                    }
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
+        if let delegate = self.delegate {
+            delegate.addCoffeeOrderViewControlletDidClose(self)
+        }
     }
     
 }

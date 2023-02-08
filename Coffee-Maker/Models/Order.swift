@@ -11,7 +11,7 @@ enum CoffeeType: String, Codable, CaseIterable {
     case cappuccino
     case latte
     case espresso
-    case longBlack
+    case longblack
 }
 
 enum CoffeeSize: String, Codable, CaseIterable {
