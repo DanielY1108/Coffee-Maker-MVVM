@@ -17,7 +17,7 @@ struct AddCoffeOrderViewModel {
     }
     
     var sizes: [String] {
-        return CoffeeSize.allCases.map { $0.rawValue }
+        return CoffeeSize.allCases.map { $0.rawValue.capitalized }
     }
 }
 
