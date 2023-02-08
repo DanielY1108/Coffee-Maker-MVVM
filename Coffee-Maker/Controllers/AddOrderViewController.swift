@@ -13,5 +13,12 @@ class AddOrderViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    }
+
+    @IBAction func closeButtonTapped(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
+    }
 
 }

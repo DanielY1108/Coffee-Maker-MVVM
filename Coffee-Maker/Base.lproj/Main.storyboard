@@ -124,8 +124,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Order" id="EWF-B3-aU6">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="0oO-nG-XHr"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="U9y-In-s4J"/>
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="0oO-nG-XHr">
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="001-G3-MBV" id="PQh-uN-BWs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="U9y-In-s4J">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="001-G3-MBV" id="Kny-5I-eXf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3lU-iH-zvs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
